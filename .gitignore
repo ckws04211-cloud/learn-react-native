@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+
+# env files (secrets)
+.env
+.env.*
+!.env.example
+
+# Expo / build
+.expo/
+dist/
+web-build/
+ios/
+android/
+
+# local settings
+.claude/settings.local.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# logs
+*.log
+npm-debug.*
+yarn-debug.*
+yarn-error.*
