@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, use, useState } from 'react';
 
 type FavoritesContextType = {
   favoriteIds: string[];
@@ -12,7 +12,7 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
 
   const toggleFavorite = (id: string) => {
     setFavoriteIds((prev) =>
-      prev.includes(id) ? prev.filter((x) => x!) : [...prev, id],
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
     );
   };
 
@@ -22,3 +22,11 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
     </FavoritesContext.Provider>
   );
 }
+
+export const useFavorites = () => {
+  const context = use(FavoritesContext);
+  if (!context) {
+    throw new Error('useFavorites must be used within FavoritesProvider');
+  }
+  return context;
+};
