@@ -6,10 +6,11 @@ import {
   TextInput,
   TextInputProps,
   View,
+  TextInputInstance,
 } from 'react-native';
 
 type Props = TextInputProps & {
-  ref?: Ref<TextInput>;
+  ref?: Ref<TextInputInstance>;
   labelText?: string;
   error?: FieldError;
   helperText?: string;

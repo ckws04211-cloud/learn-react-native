@@ -1,6 +1,6 @@
 import { ExpenseForm } from '@/types/expense';
 import { Control, Controller } from 'react-hook-form';
-import { StyleSheet, View, Pressable, Text, TextInput } from 'react-native';
+import { StyleSheet, View, Pressable, Text, TextInput, TextInputInstance } from 'react-native';
 import InputItem from './InputItem';
 import { useRef } from 'react';
 import { AMOUNT_MAX, AMOUNT_MAX_DIGITS } from '@/constants/expense';
@@ -10,7 +10,7 @@ type Props = {
   onSubmit: () => void;
 };
 export default function InputForm({ control, onSubmit }: Props) {
-  const amountRef = useRef<TextInput>(null);
+  const amountRef = useRef<TextInputInstance>(null);
   return (
     <View style={styles.formWrapper}>
       <Controller

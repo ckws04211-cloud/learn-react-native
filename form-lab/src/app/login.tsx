@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  TextInputInstance,
 } from 'react-native';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { loginSchema } from '@/schemas/login';
@@ -28,7 +29,7 @@ export default function LoginScreen() {
     },
   });
 
-  const passwordRef = useRef<TextInput>(null);
+  const passwordRef = useRef<TextInputInstance>(null);
 
   const onSubmit = (data: LoginForm) => {
     Alert.alert('알림', `${data.email}계정 로그인 성공`);
@@ -84,7 +85,7 @@ export default function LoginScreen() {
                 onBlur={onBlur}
                 error={error}
                 ref={passwordRef}
-                onSubmitEditing={handleSubmit(onSubmit)}
+                onSubmitEditing={() => handleSubmit(onSubmit)()}
                 secureTextEntry
                 returnKeyType="done"
               />
@@ -92,10 +93,10 @@ export default function LoginScreen() {
           }}
         />
 
-        {/*   <Pressable style={styles.loginButton} onPress={handleSubmit(onSubmit)}>
+        {/*   <Pressable style={styles.loginButton} onPress={() => handleSubmit(onSubmit)()}>
           <Text style={styles.loginButtonText}>로그인</Text>
         </Pressable> */}
-        <Button buttonText="로그인" onPress={handleSubmit(onSubmit)} />
+        <Button buttonText="로그인" onPress={() => handleSubmit(onSubmit)()} />
       </KeyboardAvoidingView>
     </Pressable>
   );

@@ -11,12 +11,13 @@ import {
   Pressable,
   StyleSheet,
   TextInput,
+  TextInputInstance,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 
 export default function PasswordScreen() {
-  const newPasswordRef = useRef<TextInput>(null);
-  const confirmNewPasswordRef = useRef<TextInput>(null);
+  const newPasswordRef = useRef<TextInputInstance>(null);
+  const confirmNewPasswordRef = useRef<TextInputInstance>(null);
 
   const {
     control: passwordFormControl,
@@ -115,7 +116,7 @@ export default function PasswordScreen() {
                 error={error}
                 ref={confirmNewPasswordRef}
                 returnKeyType="done"
-                onSubmitEditing={passwordFormHandleSubmit(handleDone)}
+                onSubmitEditing={() => passwordFormHandleSubmit(handleDone)()}
                 secureTextEntry
               />
             );
@@ -123,7 +124,7 @@ export default function PasswordScreen() {
         />
         <Button
           buttonText="비밀번호 변경"
-          onPress={passwordFormHandleSubmit(handleDone)}
+          onPress={() => passwordFormHandleSubmit(handleDone)()}
         />
       </KeyboardAvoidingView>
     </Pressable>

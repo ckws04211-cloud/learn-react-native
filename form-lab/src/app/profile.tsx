@@ -11,11 +11,12 @@ import {
   Pressable,
   StyleSheet,
   TextInput,
+  TextInputInstance,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 
 export default function ProfileScreen() {
-  const ageInputRef = useRef<TextInput>(null);
+  const ageInputRef = useRef<TextInputInstance>(null);
 
   const {
     control: profileFormControl,
@@ -106,12 +107,12 @@ export default function ProfileScreen() {
                 onBlur={onBlur}
                 error={error}
                 returnKeyType="done"
-                onSubmitEditing={profileFormSubmit(handleRegister)}
+                onSubmitEditing={() => profileFormSubmit(handleRegister)()}
               />
             );
           }}
         />
-        <Button buttonText="등록" onPress={profileFormSubmit(handleRegister)} />
+        <Button buttonText="등록" onPress={() => profileFormSubmit(handleRegister)()} />
       </KeyboardAvoidingView>
     </Pressable>
   );

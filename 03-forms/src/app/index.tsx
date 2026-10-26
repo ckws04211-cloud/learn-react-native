@@ -7,6 +7,7 @@ import {
   Text,
   TextInput,
   View,
+  TextInputInstance,
 } from 'react-native';
 import { Controller, useForm } from 'react-hook-form';
 import { SignupForm } from '@/types/signup';
@@ -21,8 +22,8 @@ export default function Index() {
     mode: 'onBlur',
     defaultValues: { email: '', password: '', confirmPassword: '' },
   });
-  const passwordRef = useRef<TextInput>(null);
-  const confirmPasswordRef = useRef<TextInput>(null);
+  const passwordRef = useRef<TextInputInstance>(null);
+  const confirmPasswordRef = useRef<TextInputInstance>(null);
 
   // 회원가입
   const onSignup = (data: SignupForm) => {
@@ -102,7 +103,7 @@ export default function Index() {
                 onBlur={onBlur}
                 error={error}
                 returnKeyType="send"
-                onSubmitEditing={handleSubmit(onSignup)}
+                onSubmitEditing={() => handleSubmit(onSignup)()}
                 secureTextEntry
               />
             )}
@@ -112,7 +113,7 @@ export default function Index() {
               styles.signupButton,
               pressed && { opacity: 0.7 },
             ]}
-            onPress={handleSubmit(onSignup)}
+            onPress={() => handleSubmit(onSignup)()}
           >
             <Text style={styles.signupButtonText}>가입하기</Text>
           </Pressable>

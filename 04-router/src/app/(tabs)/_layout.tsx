@@ -13,7 +13,7 @@ export default function TabLayout() {
         options={{
           title: '책 목록',
           tabBarIcon: ({ color }) => {
-            return <FontAwesome name="book" size={24} color={color} />;
+            return <FontAwesome name="book" size={24} color={color as string} />;
           },
         }}
       />
@@ -22,7 +22,7 @@ export default function TabLayout() {
         options={{
           title: '즐겨찾기',
           tabBarIcon: ({ color }) => {
-            return <FontAwesome name="bookmark" size={24} color={color} />;
+            return <FontAwesome name="bookmark" size={24} color={color as string} />;
           },
         }}
       />

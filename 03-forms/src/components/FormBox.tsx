@@ -8,12 +8,13 @@ import {
   TextInput,
   TextInputProps,
   View,
+  TextInputInstance,
 } from 'react-native';
 
 type Props = TextInputProps & {
   labelText: string;
   error?: FieldError;
-  ref?: Ref<TextInput>;
+  ref?: Ref<TextInputInstance>;
 };
 
 export default function FormBox({

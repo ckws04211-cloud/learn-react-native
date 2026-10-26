@@ -5,13 +5,14 @@ import {
   TextInput,
   TextInputProps,
   View,
+  TextInputInstance,
 } from 'react-native';
 import { FieldError } from 'react-hook-form';
 import { Ref, useState } from 'react';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 type Props = TextInputProps & {
-  ref?: Ref<TextInput>;
+  ref?: Ref<TextInputInstance>;
   labelText?: string;
   error?: FieldError;
 };
