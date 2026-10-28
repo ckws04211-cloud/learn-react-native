@@ -11,8 +11,7 @@ export default function PostDetailScreen() {
   const { data, isPending, isError, refetch, error } = useQuery({
     queryKey: ['post', id],
     queryFn: () => fetchPost(Number(id)),
-    staleTime: 0,
-    gcTime: 0,
+    staleTime: 60_000,
   });
   return (
     <View style={styles.container}>
